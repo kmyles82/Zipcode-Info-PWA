@@ -2,17 +2,21 @@
   <div class="ion-page">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Hello World</ion-title>
+        <ion-title>Zip Info</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <h1>Welcome To @ionic/vue</h1>
+      <ZipSearch/>
     </ion-content>
   </div>
 </template>
 
 <script>
+import ZipSearch from '../components/ZipSearch'
 export default {
   name: "home",
+  components:{
+    ZipSearch
+  }
 };
 </script>
