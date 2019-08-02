@@ -1,3 +1,5 @@
+//setups pwa functionality
+
 module.exports = {
     pwa: {
         workboxPluginMode: 'GenerateSW',
