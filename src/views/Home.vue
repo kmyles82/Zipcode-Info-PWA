@@ -8,6 +8,7 @@
     <ion-content class="ion-padding">
       <ZipSearch @get-zip="getZipInfo"/>
       <ZipInfo :info="info"/>
+      <ClearInfo :info="info" v-on:clear-info="clearInfo"/>
     </ion-content>
   </div>
 </template>
@@ -16,6 +17,7 @@
 import ZipSearch from '../components/ZipSearch'
 // import axios from 'axios'
 import ZipInfo from '../components/ZipInfo'
+import ClearInfo from '../components/ClearInfo'
 
 export default {
   name: "home",
@@ -26,7 +28,8 @@ export default {
   },
   components:{
     ZipSearch,
-    ZipInfo
+    ZipInfo,
+    ClearInfo,
   },
   methods: {
     async getZipInfo(zip){
@@ -39,14 +42,17 @@ export default {
       // console.log(this.info)
     },
     showAlert(){
-            return this.$ionic.alertController
-            .create({
-                header: "Not Valid",
-                message: "Please enter a valid zipcode",
-                buttons: ["OK"]
-            })
-            .then(a => a.present());
-        }
+        return this.$ionic.alertController
+        .create({
+            header: "Not Valid",
+            message: "Please enter a valid zipcode",
+            buttons: ["OK"]
+        })
+        .then(a => a.present());
+    },
+    clearInfo(){
+      this.info = null
+    }
   },
 };
 </script>
