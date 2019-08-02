@@ -7,16 +7,26 @@
     </ion-header>
     <ion-content class="ion-padding">
       <ZipSearch @get-zip="getZipInfo"/>
+      <ZipInfo :info="info"/>
     </ion-content>
   </div>
 </template>
 
 <script>
 import ZipSearch from '../components/ZipSearch'
+// import axios from 'axios'
+import ZipInfo from '../components/ZipInfo'
+
 export default {
   name: "home",
+  data(){
+    return{
+      info: null
+    }
+  },
   components:{
-    ZipSearch
+    ZipSearch,
+    ZipInfo
   },
   methods: {
     async getZipInfo(zip){
@@ -25,10 +35,8 @@ export default {
       if(res.status === 404){
         this.showAlert();
       }
-      const info = await res.json();
-
-      console.log(info)
-
+      this.info = await res.json();
+      // console.log(this.info)
     },
     showAlert(){
             return this.$ionic.alertController
